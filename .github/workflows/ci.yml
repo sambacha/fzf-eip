@@ -1,13 +1,20 @@
----
 name: CI
-"on":
+
+on:
   push:
     branches:
       - master
   schedule:
     # https://crontab.guru/every-day
     - cron: "0 0 * * *"
+  pull_request_target:
+    branches:
+      - master
   workflow_dispatch: {}
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
   sync-eips:
